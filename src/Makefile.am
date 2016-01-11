@@ -1,0 +1,88 @@
+lib_LIBRARIES = lib@PACKAGE_NAME@-@PACKAGE_VERSION@.a
+@PACKAGE_NAME@_@PACKAGE_VERSION@_includedir = $(includedir)/@PACKAGE_NAME@-@PACKAGE_VERSION@
+
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES =
+
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_CFLAGS =-I$(top_srcdir)/src
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_CFLAGS +=-I$(top_srcdir)/src/common/sys -DSYSCONFDIR="\"/home/bla\""
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_CFLAGS +=-DBUILD_DATE="\"${date}\"" -DZEBRA_VERSION="\"0.99.24\"" -DHOSTNAME="\"cpqd_hostname\""
+
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_CXXFLAGS =-I$(top_srcdir)/src
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_CXXFLAGS +=-I$(top_srcdir)/src/common/sys
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_CXXFLAGS +=-DBUILD_DATE="\"TBD\""
+
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS =
+
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += buffer.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += checksum.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += command.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += daemon.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += distribute.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += filter.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += getopt.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += getopt1.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += hash.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += keychain.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += linklist.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += log.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += md5.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += memory.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += memtypes.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += network.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += pid_output.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += plist.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += pqueue.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += prefix.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += print_version.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += privs.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += routemap.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += sigevent.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += smux.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += sockopt.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += sockunion.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += str.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += stream.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += table.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += thread.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += vector.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += vty.c
+lib@PACKAGE_NAME@_@PACKAGE_VERSION@_a_SOURCES += workqueue.c
+
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += buffer.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += command.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += checksum.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += config.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += distribute.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += filter.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += getopt.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += hash.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += if.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += keychain.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += linklist.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += log.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += md5.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += md5-gnu.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += memory.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += memtypes.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += network.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += plist.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += pqueue.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += prefix.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += regex-gnu.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += route_types.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += privs.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += routemap.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += sigevent.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += smux.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += sockopt.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += sockunion.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += str.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += stream.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += table.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += thread.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += vector.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += version.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += vty.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += workqueue.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += zassert.h
+nobase_@PACKAGE_NAME@_@PACKAGE_VERSION@_include_HEADERS += zebra.h

@@ -1,0 +1,24 @@
+This library is based on Quagga.
+Version: 0.99.24 of writing mostly the files from the /lib-subfolder have been copied.
+Some minor changes:
+
+include zebra.h with qoutes "
+Remove some IPv6 and multicast handling code.
+Refactored vty.h vty struct typedef and
+typdef enum type outside of struct for integration
+of third party DAO-Layers.
+
+
+
+Quagga is free software that manages various IPv4 and IPv6 routing
+protocols.
+
+Currently Quagga supports BGP4, BGP4+, OSPFv2, OSPFv3, RIPv1,
+RIPv2, and RIPng as well as very early support for IS-IS.
+
+See the file INSTALL.quagga.txt for building and installation instructions.
+
+See the file REPORTING-BUGS to report bugs.
+
+Quagga is free software. See the file COPYING for copying conditions.
+
