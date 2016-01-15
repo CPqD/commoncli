@@ -2,7 +2,7 @@
 # COMMONCLI CONFIGURATION
 ###############################################################################
 AC_INIT([commoncli],
-    m4_esyscmd([version.sh]),
+    m4_esyscmd_s([version.sh]),
     [fabian@cpqd.com.br , gcuriel@cpqd.com.br],
     [commoncli],
     [https://gerrit.cpqd.com.br/#/admin/projects/vppd/shared/libcommoncli])
@@ -149,15 +149,26 @@ fi
 AM_CONDITIONAL([RUN_UNITTEST], [ test "x$unittest" = "xtrue" ])
 
 ###############################################################################
-# DEBUG - compilation with debugging symbols
+# DEBUG - compilation with debugging symbols and without optimization
 ###############################################################################
-AC_ARG_WITH([debug], AS_HELP_STRING([--with-debug], [Build with debugging symbols]))
+AC_ARG_WITH([debug], AS_HELP_STRING([--with-debug], [Build with debugging symbols and without optimization]))
 if test "x$with_debug" = "xyes";
 then
-    CFLAGS+=" -DX_DEBUG -g3 -O0 "
-    CXXFLAGS+=" -DX_DEBUG -g3 -O0 "
+    CFLAGS+=" -g3 -O0 "
+    CXXFLAGS+=" -g3 -O0 "
 fi
 AM_CONDITIONAL([BUILD_WITH_DEBUG], [ test "x$with_debug" = "xyes" ])
+
+###############################################################################
+# DEBUG - compilation with debugging symbols
+###############################################################################
+AC_ARG_WITH([debug-symbols], AS_HELP_STRING([--with-debug-symbols], [Build with debugging symbols]))
+if test "x$with_debug_symbols" = "xyes";
+then
+    CFLAGS+=" -g3 "
+    CXXFLAGS+=" -g3 "
+fi
+AM_CONDITIONAL([BUILD_WITH_DEBUG_SYMBOLS], [ test "x$with_debug_symbols" = "xyes" ])
 
 ###############################################################################
 # EFENCE - compilation with efence
@@ -240,8 +251,8 @@ AC_ARG_WITH([stack-protection], AS_HELP_STRING([--with-stack-protection],
       [Build with stack protection]))
 if test "x$with_stack_protection" = "xyes";
 then
-    CXXFLAGS+=" -fstack-protector-all -O0 "
-    CFLAGS+=" -fstack-protector-all -O0 "
+    CXXFLAGS+=" -fstack-protector-all "
+    CFLAGS+=" -fstack-protector-all "
 fi
 AM_CONDITIONAL([BUILD_WITH_STACK_PROTECTION], [ test "x$with_stack_protection" = "xyes" ])
 
@@ -251,8 +262,8 @@ AM_CONDITIONAL([BUILD_WITH_STACK_PROTECTION], [ test "x$with_stack_protection" =
 AC_ARG_WITH([logs], AS_HELP_STRING([--with-logs], [Build with logs macros defined]))
 if test "x$with_logs" = "xyes";
 then
-    CFLAGS+=" -DX_DEBUG "
-    CXXFLAGS+=" -DX_DEBUG "
+    CFLAGS+=" -DLOW_LEVEL_LOG "
+    CXXFLAGS+=" -DLOW_LEVEL_LOG "
 fi
 AM_CONDITIONAL([BUILD_WITH_DEBUG], [ test "x$with_logs" = "xyes" ])
 
@@ -267,13 +278,8 @@ then
     if test "x$with_debug" = "xyes";
     then
         AC_MSG_ERROR([Can't use flag '--with-embedded' along with '--with-debug',
-        both alter the same flag ('-OX') !])
-    fi
-
-    if test "x$with_stack_protection" = "xyes";
-    then
-        AC_MSG_ERROR([Can't use '--with-embedded' along with '--with-stack-protection',
-        both alter the same flag ('-OX') !])
+        both alter the same flag ('-OX') !. Try to use '--with-debug-symbols'
+        and '--with-embedded' instead.])
     fi
 fi
 
