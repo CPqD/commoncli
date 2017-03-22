@@ -2,7 +2,7 @@
 # COMMONCLI CONFIGURATION
 ###############################################################################
 AC_INIT([commoncli],
-    m4_esyscmd_s([version.sh]),
+    m4_esyscmd_s([./version.sh]),
     [fabian@cpqd.com.br , gcuriel@cpqd.com.br],
     [commoncli],
     [https://gerrit.cpqd.com.br/#/admin/projects/vppd/shared/libcommoncli])
@@ -44,27 +44,9 @@ AC_SUBST([PACKAGE_DESCRIPTION], [${PACKAGE_DESCRIPTION}])
 AC_SUBST([PACKAGE_DESCRIPTION_LONG], [${PACKAGE_DESCRIPTION_LONG}])
 
 ###############################################################################
-# CHECK FOR CPQD BUILD TOOLS
-###############################################################################
-BUILDDEPS_DOWNLOAD_MSG="Following the CPqD-DRC-BuildTools Installation-instructions at http://10.4.1.26:8080"
-
-CPQD_BT="`eval echo ${CPQD_BT}`"
-if test ! -d "$CPQD_BT";
-then
-    AC_MSG_ERROR([CPQD_BT (${CPQD_BT}) it is not a directory! - $BUILDDEPS_DOWNLOAD_MSG])
-fi
-AC_SUBST(CPQD_BT, [${CPQD_BT}])
-
-AC_CHECK_PROGS([CPQD_DEPTOOL], [cpqd_builddeps])
-if test -z "$CPQD_DEPTOOL";
-then
-    AC_MSG_WARN([cpqd_builddeps not found - $BUILDDEPS_DOWNLOAD_MSG])
-fi
-
-###############################################################################
 # CHECK AND APPEND FLAGS FROM REQUIRED PACKAGES
 ###############################################################################
-PACKAGE_REQUIRES=`req.sh`
+PACKAGE_REQUIRES=`./req.sh`
 AC_SUBST([PACKAGE_REQUIRES],[$PACKAGE_REQUIRES])
 
 #Check if $PACKAGE_REQUIRES is not empty
@@ -97,7 +79,7 @@ LIBS+=" $PKGREQ_LIBS "
 ###############################################################################
 # CHECK FOR DAOGENERATOR
 ###############################################################################
-# DAOGEN_PCK=`req.sh generator`
+# DAOGEN_PCK=`./req.sh generator`
 # BIN_DIR="$(pkg-config --variable=prefix $DAOGEN_PCK)/bin"
 
 # AC_SUBST([BIN_DIR],[$BIN_DIR])
@@ -112,13 +94,6 @@ then
     AC_MSG_WARN([doxygen not found - sudo apt-get install doxygen - might resolve this])
 fi
 AM_CONDITIONAL([HAVE_DOXYGEN], [test -n "$DOXYGEN"])
-AM_COND_IF([HAVE_DOXYGEN], [AC_CONFIG_FILES([generated/doc/doxygen.dgen:$CPQD_BT/template/doxygen.dgen.in])])
-
-AC_SUBST([CPQD_DRT_OUTPUT_DIRECTORY], ["generated/doc/${PACKAGE_NAME}/${PACKAGE_VERSION}"])
-AC_SUBST([CPQD_DRT_DOXYGEN_INPUT],["${srcdir}/src ${srcdir}/doc"])
-AC_SUBST([CPQD_DRT_DOXYGEN_EXCLUDE],[''])
-AC_SUBST([CPQD_DRT_DOXYGEN_EXCLUDE_PATTERNS],[''])
-AC_SUBST([CPQD_DRT_IMAGE_PATH],["${ac_top_srcdir}/doc/doxygen/img"])
 
 ###############################################################################
 # CHECK FOR M68K COMPILATION
@@ -142,7 +117,7 @@ AC_CHECK_DECL([__m68k__],
 AC_ARG_WITH([unittest], AS_HELP_STRING([--with-unittest], [Build with unittesting]))
 if test "x$with_unittest" = "xyes";
 then
-    TESTINFRA=`req.sh pkgt`
+    TESTINFRA=`./req.sh pkgt`
     PKG_CHECK_MODULES([GTEST], [${TESTINFRA}])
     unittest="true"
 fi

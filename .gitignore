@@ -1,0 +1,53 @@
+# c++
+
+*.o
+*.a
+
+# pkg-config
+
+commoncli*pc
+
+# Gettext
+
+.deps/
+
+# automake
+
+Makefile
+Makefile.in
+/ar-lib
+/mdate-sh
+/py-compile
+/test-driver
+/ylwrap
+
+# autoconf
+
+/autom4te.cache
+/autoscan.log
+/autoscan-*.log
+/aclocal.m4
+/compile
+/config.guess
+/config.h
+/config.h.in
+/config.sub
+/configure
+/libtool
+/config.status
+/config.log
+/configure.scan
+/depcomp
+/install-sh
+/missing
+/stamp-h1
+src/version.h
+
+# libtool/
+
+/ltmain.sh
+
+# other
+
+*.swp
+*~

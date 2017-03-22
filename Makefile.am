@@ -22,6 +22,3 @@ endif
 distclean-local:
 	rm -rf sublime_project-includes.generated
 	rm -rf sublime_project-paths.generated
-
-
-include $(CPQD_BT)/mk/cpqd_drc_rules.mk
