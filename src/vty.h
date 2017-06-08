@@ -30,7 +30,7 @@ extern "C"
 #include "log.h"
 #include "sockunion.h"
 
-#define VTY_BUFSIZ 512
+#define VTY_BUFSIZ 1024 //512
 #define VTY_MAXHIST 20
 
 /* Is this vty connect to file or not */
@@ -143,7 +143,7 @@ typedef struct vty
 #define VTY_TIMEOUT_DEFAULT 0//600
 
 /* Vty read buffer size. */
-#define VTY_READ_BUFSIZ 512
+#define VTY_READ_BUFSIZ 1024 //512
 
 /* Directory separator. */
 #ifndef DIRECTORY_SEP
